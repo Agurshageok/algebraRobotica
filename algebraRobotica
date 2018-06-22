@@ -1,17 +1,18 @@
-
 void setup() 
 {
-const int pinLDR = A0;
-const int pinLED = 8;
 
-int m[7][12];
-int V;
-int f=0;
-  int c=0;
+
 
   Serial.begin(9600);
 }
 void loop(){
+  const int pinLDR = A0;
+const int pinLED = 8;
+
+  int m[7][12];
+int V;
+int c=0;
+  int f=0;
   //CARGAR LA MATRIZ
   for(f; f<=7; f++){
     for(c; c<=12;c++){
@@ -26,17 +27,33 @@ void loop(){
     }
   }
   
-  Serial.print("-------------------------------------------------------------------------------")
+  Serial.print("-------------------------------------------------------------------------------");
   
   f=0;
   c=0;
   int hora = 0;
+  int maxE[12] ={0,0,0,0,0,0,0,0,0,0,0,0};
+  int PROM = 0;
   
 for(c; c<=12;c++){
     for(f; f<=7; f++){
-      
+      maxE[c] = maxE [c] + m[f][c];
+      if( f==7){
+        maxE [c] = maxE[c] / 7;
+      }
     }
 }  
+c=0;
+hora=c;
+PROM = maxE[c];
+for (c; c<=12; c++){
+  if (maxE[c] > PROM){
+    PROM = maxE[c];
+    hora=c;
+  }
+}
+Serial.print(hora);
+
   delay(2000);  
 
 }
