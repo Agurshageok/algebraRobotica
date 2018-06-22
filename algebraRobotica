@@ -28,7 +28,7 @@ void loop(){
      Serial.print("  ");
      Serial.println(m[f][c]);
 //    Serial.println("Fila: "+f+" Columna: "+c+" :"+m[f][c]);
-    delay(20);
+    delay(2000);
     
     }
   }
@@ -59,10 +59,10 @@ hora=0;
 PROM = maxE[0];
 for(c=0; c<12; c++){
   if (maxE[c] > PROM){
-    if(){
+   // if(){
     PROM = maxE[c];
     hora=c;
-    }
+   // }
   }
 }  
 Serial.println("Calcular promedio");
